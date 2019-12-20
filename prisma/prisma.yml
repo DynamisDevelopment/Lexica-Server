@@ -1,9 +1,16 @@
 endpoint: http://192.168.99.101:4466
 datamodel:
+    #? Account 
     - API/account/user.graphql
+
+    #? Dictionary
     - API/dictionary/language.graphql
     - API/dictionary/translation.graphql
     - API/dictionary/word.graphql
+
+    #? Library
     - API/library/content.graphql
+
+    #? Misc
     - API/misc/award.graphql
     - API/misc/message.graphql
