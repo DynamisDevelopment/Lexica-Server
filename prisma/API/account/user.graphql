@@ -8,7 +8,7 @@ type User {
   karma: Int!
   password: String! @unique 
   apiKey: String! @unique
-  type: [AccountType!] @scalarList(strategy: RELATION) @default(value: USER)
+  type: [AccountType!] @scalarList(strategy: RELATION) @default(value: FREE_USER)
 
   #//! Stats and Profile
   words: Int!
@@ -26,8 +26,9 @@ type User {
 }
 
 enum AccountType {
-  USER 
+  FREE_USER 
+  BASIC_USER
+  ADVANCED_USER
   ADMIN 
   TEACHER
-  FREELANCER
 }
