@@ -3,7 +3,7 @@ type User {
   id: ID! @id
   name: String!
   email: String! @unique 
-  profilePic: String!
+  profilePic: String! 
   credits: Int!
   karma: Int!
   password: String! @unique 
@@ -14,7 +14,7 @@ type User {
   words: Int!
   awards: Int!
   tagline: String! 
-  description: String!
+  description: String! 
   tests: Int! 
 
 
@@ -34,8 +34,8 @@ enum AccountType {
 
 type Language {
   id: ID! @id 
-  name: String!
-  code: String! # Shorthand like eng
+  name: String! 
+  code: String! 
   users: Int! 
   content: [Content!]
 }
@@ -48,6 +48,7 @@ type Content {
   saves: Int! 
   shares: Int!
   type: [ContentType!]! @scalarList(strategy: RELATION)
+  content: [String!] @scalarList(strategy: RELATION)
 }
 
 enum ContentType {
@@ -62,7 +63,7 @@ enum ContentType {
 type Word {
   id: ID! @id 
   word: String!
-  neutral: String! 
+  neutral: String!
   translations: [Translation!]
 }
 
@@ -78,10 +79,11 @@ type Message {
   id: ID! @id 
   sender: User! @relation(name: "UserToMessages", onDelete: SET_NULL)
   text: String!
+  createdAt: DateTime! @createdAt
 }
 
 type Award {
   id: ID! @id 
-  name: String! @unique 
+  name: String! @unique
 }
 

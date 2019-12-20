@@ -1,0 +1,33 @@
+type User {
+  #//! Account
+  id: ID! @id
+  name: String!
+  email: String! @unique 
+  profilePic: String!
+  credits: Int!
+  karma: Int!
+  password: String! @unique 
+  apiKey: String! @unique
+  type: [AccountType!] @scalarList(strategy: RELATION) @default(value: USER)
+
+  #//! Stats and Profile
+  words: Int!
+  awards: Int!
+  tagline: String! 
+  description: String!
+  tests: Int! 
+
+
+  #//! Data
+  languages: [Language!]
+  content: [Content!]
+  friends: [User!] 
+  messages: [Message!] @relation(name: "UserToMessages", onDelete: CASCADE)
+}
+
+enum AccountType {
+  USER 
+  ADMIN 
+  TEACHER
+  FREELANCER
+}

@@ -1,0 +1,6 @@
+type Word {
+  id: ID! @id 
+  word: String!
+  neutral: String! 
+  translations: [Translation!]
+}

@@ -1,0 +1,19 @@
+type Content {
+  id: ID! @id 
+  name: String!
+  uploader: User!
+  likes: Int! 
+  saves: Int! 
+  shares: Int!
+  type: [ContentType!]! @scalarList(strategy: RELATION)
+  content: [String!] @scalarList(strategy: RELATION)
+}
+
+enum ContentType {
+  AUDIO  
+  BOOK 
+  ARTICLE 
+  VIDEO
+  EXERCISE
+  LESSON
+}

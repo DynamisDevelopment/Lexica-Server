@@ -1,0 +1,6 @@
+type Message {
+  id: ID! @id 
+  sender: User! @relation(name: "UserToMessages", onDelete: SET_NULL)
+  text: String!
+  createdAt: DateTime! @createdAt
+}
