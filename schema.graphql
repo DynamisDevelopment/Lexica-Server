@@ -1,14 +1,26 @@
-# import Comment from "./API/account/user.graphql"
+#? Account
+# import * from "./API/account/user.graphql"
+
+#? Dictionary 
+# import * from "./API/dictionary/language.graphql"
+# import * from "./API/dictionary/translation.graphql"
+# import * from "./API/dictionary/word.graphql"
+
+#? Library 
+# import * from "./API/library/content.graphql"
+
+#? Misc
+# import * from "./API/misc/award.graphql"
+# import * from "./API/misc/message.graphql"
 
 type Query {
   users: [User!]!
+  languages: [Language!]!
+  words: [Word!]!
+  contents: [Content!]!
+  awards: [Award!]!
+  Messages: [Message!]!
 }
 
 # type Mutation {}
 # type Subscription {}
-
-type User {
-  id: ID! 
-  name: String!
-  comments: [Comment!]!
-}

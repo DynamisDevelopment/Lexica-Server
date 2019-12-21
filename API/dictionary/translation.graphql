@@ -1,0 +1,6 @@
+type Translation {
+  id: ID! 
+  uses: Int!
+  word: String!
+  neutral: String!
+}

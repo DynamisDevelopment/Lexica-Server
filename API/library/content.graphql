@@ -1,0 +1,19 @@
+type Content {
+  id: ID! 
+  name: String!
+  uploader: User!
+  likes: Int! 
+  saves: Int! 
+  shares: Int!
+  type: [ContentType!]! 
+  content: [String!] 
+}
+
+enum ContentType {
+  AUDIO  
+  BOOK 
+  ARTICLE 
+  VIDEO
+  EXERCISE
+  LESSON
+}
