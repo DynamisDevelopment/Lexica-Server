@@ -1,5 +1,5 @@
 type Word {
-  id: ID! @id 
+  id: ID!
   word: String!
   neutral: String! 
   language: Language!
