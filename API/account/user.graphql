@@ -3,19 +3,19 @@ type User {
   id: ID! 
   name: String!
   email: String! 
-  profilePic: String!
-  credits: Int!
-  karma: Int!
+  profilePic: String
+  credits: Int
+  karma: Int
   password: String!  
   apiKey: String! 
   type: [AccountType!] 
 
   #//! Stats and Profile
-  words: Int!
-  awards: Int!
-  tagline: String! 
-  description: String!
-  tests: Int! 
+  words: Int
+  awards: Int
+  tagline: String
+  description: String
+  tests: Int
 
 
   #//! Data

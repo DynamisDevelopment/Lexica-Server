@@ -1,15 +1,14 @@
 import { GraphQLServer } from 'graphql-yoga'
 import prisma from './prisma'
 import { importSchema } from 'graphql-import'
-// import { Query, Mutation, Subscription } from './resolvers'
-
-// console.log(importSchema('./API/account/user.graphql'))
+import { Query } from './API/Queries'
+import { Mutation } from './API/Mutations'
 
 const server = new GraphQLServer({
     typeDefs: importSchema('./schema.graphql'),
     resolvers: {
-        // Query,
-        // Mutation,
+        Query,
+        Mutation,
         // Subscription
     },
     context: { prisma }

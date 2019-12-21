@@ -1,5 +1,5 @@
 # source: http://192.168.99.101:4466
-# timestamp: Fri Dec 20 2019 18:43:09 GMT-0500 (Eastern Standard Time)
+# timestamp: Fri Dec 20 2019 20:06:46 GMT-0500 (Eastern Standard Time)
 
 enum AccountType {
   FREE_USER
@@ -823,6 +823,11 @@ input LanguageCreateManyInput {
   connect: [LanguageWhereUniqueInput!]
 }
 
+input LanguageCreateOneInput {
+  create: LanguageCreateInput
+  connect: LanguageWhereUniqueInput
+}
+
 """An edge in a connection."""
 type LanguageEdge {
   """The item at the end of the edge."""
@@ -1083,9 +1088,21 @@ input LanguageUpdateManyWithWhereNestedInput {
   data: LanguageUpdateManyDataInput!
 }
 
+input LanguageUpdateOneRequiredInput {
+  create: LanguageCreateInput
+  connect: LanguageWhereUniqueInput
+  update: LanguageUpdateDataInput
+  upsert: LanguageUpsertNestedInput
+}
+
 input LanguageUpdateWithWhereUniqueNestedInput {
   where: LanguageWhereUniqueInput!
   data: LanguageUpdateDataInput!
+}
+
+input LanguageUpsertNestedInput {
+  update: LanguageUpdateDataInput!
+  create: LanguageCreateInput!
 }
 
 input LanguageUpsertWithWhereUniqueNestedInput {
@@ -2214,8 +2231,8 @@ type User implements Node {
   type: [AccountType!]!
   words: Int!
   awards: Int!
-  tagline: String!
-  description: String!
+  tagline: String
+  description: String
   tests: Int!
   languages(where: LanguageWhereInput, orderBy: LanguageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Language!]
   content(where: ContentWhereInput, orderBy: ContentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Content!]
@@ -2237,16 +2254,16 @@ input UserCreateInput {
   id: ID
   name: String!
   email: String!
-  profilePic: String!
-  credits: Int!
-  karma: Int!
+  profilePic: String
+  credits: Int
+  karma: Int
   password: String!
   apiKey: String!
-  words: Int!
-  awards: Int!
-  tagline: String!
-  description: String!
-  tests: Int!
+  words: Int
+  awards: Int
+  tagline: String
+  description: String
+  tests: Int
   type: UserCreatetypeInput
   languages: LanguageCreateManyInput
   content: ContentCreateManyWithoutUploaderInput
@@ -2277,16 +2294,16 @@ input UserCreateWithoutContentInput {
   id: ID
   name: String!
   email: String!
-  profilePic: String!
-  credits: Int!
-  karma: Int!
+  profilePic: String
+  credits: Int
+  karma: Int
   password: String!
   apiKey: String!
-  words: Int!
-  awards: Int!
-  tagline: String!
-  description: String!
-  tests: Int!
+  words: Int
+  awards: Int
+  tagline: String
+  description: String
+  tests: Int
   type: UserCreatetypeInput
   languages: LanguageCreateManyInput
   friends: UserCreateManyInput
@@ -2297,16 +2314,16 @@ input UserCreateWithoutMessagesInput {
   id: ID
   name: String!
   email: String!
-  profilePic: String!
-  credits: Int!
-  karma: Int!
+  profilePic: String
+  credits: Int
+  karma: Int
   password: String!
   apiKey: String!
-  words: Int!
-  awards: Int!
-  tagline: String!
-  description: String!
-  tests: Int!
+  words: Int
+  awards: Int
+  tagline: String
+  description: String
+  tests: Int
   type: UserCreatetypeInput
   languages: LanguageCreateManyInput
   content: ContentCreateManyWithoutUploaderInput
@@ -2363,8 +2380,8 @@ type UserPreviousValues {
   type: [AccountType!]!
   words: Int!
   awards: Int!
-  tagline: String!
-  description: String!
+  tagline: String
+  description: String
   tests: Int!
 }
 
@@ -3476,6 +3493,7 @@ type Word implements Node {
   id: ID!
   word: String!
   neutral: String!
+  language: Language!
   translations(where: TranslationWhereInput, orderBy: TranslationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Translation!]
 }
 
@@ -3493,6 +3511,7 @@ input WordCreateInput {
   id: ID
   word: String!
   neutral: String!
+  language: LanguageCreateOneInput!
   translations: TranslationCreateManyInput
 }
 
@@ -3560,6 +3579,7 @@ input WordSubscriptionWhereInput {
 input WordUpdateInput {
   word: String
   neutral: String
+  language: LanguageUpdateOneRequiredInput
   translations: TranslationUpdateManyInput
 }
 
@@ -3697,6 +3717,7 @@ input WordWhereInput {
 
   """All values not ending with the given string."""
   neutral_not_ends_with: String
+  language: LanguageWhereInput
   translations_every: TranslationWhereInput
   translations_some: TranslationWhereInput
   translations_none: TranslationWhereInput

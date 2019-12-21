@@ -2,5 +2,6 @@ type Word {
   id: ID! @id 
   word: String!
   neutral: String! 
+  language: Language!
   translations: [Translation!]
 }

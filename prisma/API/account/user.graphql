@@ -3,19 +3,19 @@ type User {
   id: ID! @id
   name: String!
   email: String! @unique 
-  profilePic: String!
-  credits: Int!
-  karma: Int!
+  profilePic: String!  @default(value: "nothing")
+  credits: Int!  @default(value: 0)
+  karma: Int!  @default(value: 0)
   password: String! @unique 
   apiKey: String! @unique
   type: [AccountType!] @scalarList(strategy: RELATION) @default(value: FREE_USER)
 
   #//! Stats and Profile
-  words: Int!
-  awards: Int!
-  tagline: String! 
-  description: String!
-  tests: Int! 
+  words: Int!  @default(value: 0)
+  awards: Int!  @default(value: 0)
+  tagline: String
+  description: String
+  tests: Int!  @default(value: 0)
 
 
   #//! Data
