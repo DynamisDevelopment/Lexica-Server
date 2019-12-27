@@ -1,10 +1,10 @@
-import { UsersSubscription } from './account/user'
-import { LanguageSubscription } from './dictionary/language'
-import { TranslationSubscription } from './dictionary/translation'
-import { WordSubscription } from './dictionary/word'
-import { ContentSubscription } from './library/content'
-import { AwardSubscription } from './misc/award'
-import { MessageSubscription } from './misc/message'
+import { UsersSubscription } from './account/user/user'
+import { LanguageSubscription } from './dictionary/language/language'
+import { TranslationSubscription } from './dictionary/translation/translation'
+import { WordSubscription } from './dictionary/word/word'
+import { ContentSubscription } from './library/content/content'
+import { AwardSubscription } from './misc/award/award'
+import { MessageSubscription } from './misc/message/message'
 
 
 
