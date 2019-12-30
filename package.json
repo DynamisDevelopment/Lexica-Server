@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@babel/polyfill": "^7.7.0",
+    "babel-register": "^6.26.0",
+    "bcryptjs": "^2.4.3",
     "graphql-yoga": "^1.16.7",
     "prisma-binding": "2.1.1"
   },
@@ -7,19 +10,27 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
+    "apollo-boost": "^0.4.7",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "1.7.0",
-    "chai": "^4.2.0",
+    "babel-preset-env": "^1.7.0",
+    "cross-fetch": "^3.0.4",
+    "env-cmd": "^8.0.2",
+    "graphql": "^14.5.8",
     "graphql-cli": "^3.0.14",
     "graphql-import": "^0.7.1",
     "istanbul": "^0.4.5",
-    "mocha": "^6.2.2"
+    "jest": "^23.5.0"
+  },
+  "jest": {
+    "globalSetup": "./src/jest/globalSetup.js",
+    "globalTeardown": "./src/jest/globalTeardown.js"
   },
   "scripts": {
-    "test": "cd src && mocha index.test.js",
     "get-schema": "graphql get-schema -p prisma",
-    "start": "nodemon src/index.js --ext js,graphql --exec babel-node"
+    "start": "env-cmd ./config/dev.env nodemon src/index.js --ext js,graphql --exec babel-node",
+    "test": "env-cmd ./config/dev.env jest --watch",
+    "coverage": "env-cmd ./config/dev.env jest --coverage"
   },
   "author": "Joshua Hall",
   "license": "ISC",

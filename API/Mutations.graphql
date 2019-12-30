@@ -1,0 +1,19 @@
+type Mutation {
+  addUser(data: CreateUserInput): User!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+  apiKey: String 
+  type: [AccountType!]
+}
+
+enum AccountType {
+  FREE_USER 
+  BASIC_USER
+  ADVANCED_USER
+  ADMIN 
+  TEACHER
+}

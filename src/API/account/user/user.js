@@ -1,15 +1,28 @@
-export const UsersQuery = {
+const UsersQuery = {
     users(parent, args, { prisma }, info) { return prisma.query.users(null, info) }
 }
 
-export const UsersMutation = {
+const UsersMutation = {
     async addUser(parent, { data }, { prisma }, info) {
-        const newUser = await prisma.mutation.createUser({ data }, info)
-
-        return newUser
+        return prisma.mutation.createUser({ data }, info)
+    },
+    async updateUser(parent, args, { prisma }, info) {
+        return prisma.mutation.updateUser({
+            where: { email: args.email },
+            data: args.data
+        }, info)
+    },
+    async deleteUser(parent, args, { prisma }, info) {
+        return prisma.mutation.deleteUser({ where: { id: args.id } }, info)
     }
 }
 
-export const UsersSubscription = {
+const UsersSubscription = {
 
+}
+
+module.exports = {
+    UsersQuery,
+    UsersMutation,
+    UsersSubscription
 }
