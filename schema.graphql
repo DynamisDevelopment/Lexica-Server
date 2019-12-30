@@ -13,6 +13,9 @@
 # import * from "./API/misc/award.graphql"
 # import * from "./API/misc/message.graphql"
 
+# Todo - Figure out how to import remote resolvers; keeps throwing error Unexpected <EOF>.
+
+# ! Queries
 type Query {
   users: [User!]!
   languages: [Language!]!
@@ -22,8 +25,12 @@ type Query {
   Messages: [Message!]!
 }
 
+
+#! Mutations 
 type Mutation {
   addUser(data: CreateUserInput): User!
+  updateUser(email: String!, data: CreateUserInput): User!
+  deleteUser(id: String!): User!
 }
 
 input CreateUserInput {
@@ -42,5 +49,5 @@ enum AccountType {
   TEACHER
 }
 
-
+#! Subscriptions
 # type Subscription {}

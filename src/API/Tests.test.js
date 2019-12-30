@@ -1,1 +1,0 @@
-require('./account/user/user.test.js')

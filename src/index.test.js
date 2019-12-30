@@ -1,1 +1,0 @@
-require('./API/Tests.test.js')

@@ -1,4 +1,4 @@
-endpoint: http://192.168.99.101:4466
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel:
     #? Account 
     - API/account/user.graphql
